@@ -52,12 +52,12 @@ router.get('/:id', (req, res) => {
 });
 
 function validateUser(user) {
-  const schema = {
+  const schema = Joi.object({
     name: Joi.string().min(3).required(),
     age : Joi.number()
-  };
+  });
 
-  return Joi.validate(user, schema);
+  return schema.validate(user);
 }
 
 module.exports = router;
